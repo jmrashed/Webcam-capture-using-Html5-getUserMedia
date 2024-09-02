@@ -12,7 +12,8 @@ This project demonstrates how to capture video and audio from a user's webcam an
 
 ## Demo
 
-![Webcam Capture](./assets/images/Screenshot%202024-09-02%20at%203.08.36 PM.png) *(Add a screenshot of your application in action)*
+![Webcam Capture](./assets/images/Screenshot%202024-09-02%20at%203.16.41 PM.png) *(Part 01)*
+![Webcam Capture](./assets/images/Screenshot%202024-09-02%20at%203.08.36 PM.png) *(Part 02)*
 
 ## Installation
 

@@ -74,11 +74,6 @@ Contributions are welcome! Feel free to submit a pull request or open an issue t
 
 ## Author
 
-Developed by [Your Name](https://github.com/jmrashed).
+Developed by [Muhammad Rasheduzzaman](https://github.com/jmrashed).
 
-### Instructions:
-
-- **Demo:** Add a screenshot of your application in action and place it in the repository, renaming it to `screenshot.png`.
-- **License:** Ensure you have a `LICENSE` file in your repository or adjust the license section as per your preference.
-- **Author:** Replace `[Your Name]` with your actual name or GitHub handle.
  

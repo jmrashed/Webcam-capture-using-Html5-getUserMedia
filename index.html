@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Record |  Author Jmrashed</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://evanw.github.io/glfx.js/glfx.js"></script>
+  <script type="text/javascript" src="./assets/js/jsmanipulate.min.js"></script>
+  <script src="./assets/js/whammy.js"></script>
+  <script src="./assets/js/video.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="./assets/css/style.css">
+ 
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Webcam Capture</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#video-record">Video Record</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#audio-record">Audio Record</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#recordings">Recordings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#log">Log</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    
+
+    <div id="videoFilterCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#videoFilterCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#videoFilterCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#videoFilterCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://placehold.co/1500x500" class="d-block w-100" alt="Normal Filter">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Normal Filter</h5>
+            <p>Description of the normal filter.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://placehold.co/1500x500" class="d-block w-100" alt="Greyscale Filter">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Greyscale Filter</h5>
+            <p>Description of the greyscale filter.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://placehold.co/1500x500" class="d-block w-100" alt="Blur Filter">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Blur Filter</h5>
+            <p>Description of the blur filter.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#videoFilterCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#videoFilterCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    
+    <div class="page-header mt-5">
+      <h3>Video Record</h3>
+    </div>
+    <div class="page-header">
+      <h1><small>Select Filter</small></h1>
+    </div>
+    <div class="mb-3">
+      <select id="dropdown" class="form-select">
+        <option value="normal">normal</option>
+        <option value="greyscale">greyscale</option>
+        <option value="multiply">multiply</option>
+        <option value="blur">blur</option>
+        <option value="water">water</option>
+        <option value="sparkle">sparkle</option>
+        <option value="kaleidoscope">kaleidoscope</option>
+      </select>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <video width="320" height="240" id="campreview" autoplay muted class="w-100"></video>
+      </div>
+      <div class="col-md-6">
+        <video width="320" height="240" id="result" controls class="w-100"></video>
+      </div>
+    </div>
+
+    <div class="page-header">
+      <h1><small>Manual Video Recording Options</small></h1>
+    </div>
+    <progress id="progress" style="visibility: hidden;"></progress>
+    <div id="information"></div>
+
+    <div class="mb-3">
+      <button id="startButton" class="btn btn-primary me-2" onclick="startCapture();">Start</button>
+      <button id="stopButton" class="btn btn-danger" onclick="stopCapture();" disabled>Stop</button>
+    </div>
+
+    <div class="page-header">
+      <h1><small>Manual Audio Recording Options</small></h1>
+    </div>
+    <div class="mb-3">
+      <button onclick="startRecording(this);" id="audbut" class="btn btn-primary me-2">Record</button>
+      <button onclick="stopRecording(this);" id="audbut2" class="btn btn-danger" disabled>Stop</button>
+    </div>
+
+    <h2>Recordings</h2>
+    <ul id="recordingslist"></ul>
+
+    <h2>Log</h2>
+    <pre id="log"></pre>
+
+    <div class="page-header">
+      <h1>Recording Options</h1>
+    </div>
+    <div class="d-flex gap-2">
+      <button class="mast mastrecord btn btn-primary">Record It</button>
+      <button class="mast maststop btn btn-danger">Stop Recording</button>
+      <button class="mast mastplay btn btn-info">Play</button>
+      <button class="mast mastsave btn btn-success">Save</button>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var filterType = 'normal';
+    var multiplyColor = [255, 105, 0];
+
+    $(document).ready(function () {
+      console.log('doc ready');
+
+      $('.mastrecord').click(function () {
+        console.log('Start recording');
+        $('#startButton').click();
+        $('#audbut').click();
+      });
+
+      $('.maststop').click(function () {
+        console.log('Stop recording');
+        $('#stopButton').click();
+        $('#audbut2').click();
+      });
+
+      $('.mastplay').click(function () {
+        console.log('Play video');
+        const video = document.getElementById("result");
+        video.play();
+        const audio = document.querySelector("audio");
+        audio.play();
+      });
+
+      $('#dropdown').change(function () {
+        filterType = $(this).val();
+      });
+
+      $('.mastsave').click(function () {
+        const audioPath = $('#recordingslist li a').attr('href');
+        const videoPath = $('video#result').attr('src');
+        console.log(`Audio Path: ${audioPath}, Video Path: ${videoPath}`);
+      });
+    });
+  </script>
+
+  <script>
+    function __log(e, data) {
+      document.getElementById('log').innerHTML += "\n" + e + " " + (data || '');
+    }
+
+    let audio_context;
+    let recorder;
+
+    function startUserMedia(stream) {
+      const input = audio_context.createMediaStreamSource(stream);
+      const video = document.getElementById("campreview");
+      video.srcObject = stream;
+      __log('Media stream created.');
+
+      const zeroGain = audio_context.createGain();
+      zeroGain.gain.value = 0;
+      input.connect(zeroGain);
+      zeroGain.connect(audio_context.destination);
+      __log('Input connected to muted gain node connected to audio context destination.');
+
+      recorder = new Recorder(input);
+      __log('Recorder initialized.');
+    }
+
+    function startRecording(button) {
+      recorder && recorder.record();
+      button.disabled = true;
+      button.nextElementSibling.disabled = false;
+      console.log('Recording...');
+    }
+
+    function stopRecording(button) {
+      recorder && recorder.stop();
+      button.disabled = true;
+      button.previousElementSibling.disabled = false;
+      console.log('Stopped recording.');
+
+      createDownloadLink();
+      recorder.clear();
+    }
+
+    function createDownloadLink() {
+      recorder && recorder.exportWAV(function (blob) {
+        const url = URL.createObjectURL(blob);
+        const li = document.createElement('li');
+        const au = document.createElement('audio');
+        const hf = document.createElement('a');
+
+        au.controls = true;
+        au.src = url;
+        hf.href = url;
+        hf.download = new Date().toISOString() + '.wav';
+        hf.textContent = hf.download;
+        li.appendChild(au);
+        li.appendChild(hf);
+        document.getElementById('recordingslist').appendChild(li);
+
+        upload(blob);
+      });
+    }
+
+    function upload(blobOrFile) {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'saveaudio.php', true);
+      xhr.onload = function (e) {
+        console.log('Upload completed');
+      };
+      xhr.send(blobOrFile);
+    }
+
+    window.onload = function init() {
+      try {
+        initvideo();
+
+        // webkit shim
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        navigator.mediaDevices.getUserMedia = navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia;
+
+        audio_context = new AudioContext;
+        __log('Audio context set up.');
+        __log('navigator.getUserMedia ' + (navigator.mediaDevices.getUserMedia ? 'available.' : 'not present!'));
+
+        navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(startUserMedia).catch(function (e) {
+          __log('No live audio input: ' + e);
+        });
+      } catch (e) {
+        alert('No web audio support in this browser!');
+      }
+    };
+  </script>
+
+  <script src="recorder.js"></script>
+</body>
+
+</html>

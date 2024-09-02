@@ -1,0 +1,202 @@
+
+
+  .jumbotron {
+    margin: 60px 0;
+    text-align: center;
+  }
+
+  .jumbotron h1 {
+    font-size: 72px;
+    line-height: 1;
+  }
+
+  .jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+  }
+
+  .marketing {
+    margin: 60px 0;
+  }
+
+  .marketing p+h4 {
+    margin-top: 28px;
+  }
+
+  .mast {
+    margin-left: 8px;
+  }
+
+  /* custom css  */
+  /* Global styles */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+  
+  /* Custom container */
+  .container-narrow {
+    margin: 0 auto;
+    max-width: 800px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header styling */
+  .page-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #007bff;
+    text-align: center;
+  }
+  
+  .page-header h1 small {
+    font-size: 24px;
+    font-weight: 400;
+    color: #6c757d;
+  }
+  
+  /* Select dropdown */
+  #dropdown {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #495057;
+  }
+  
+  /* Video styling */
+  video {
+    border-radius: 10px;
+    border: 2px solid #dee2e6;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  video:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Button styling */
+  .btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+  }
+  
+  .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: #fff;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+    background-color: darken($color, 10%);
+  }
+  
+  .mast {
+    margin: 10px 5px;
+  }
+  
+  /* Progress bar */
+  progress {
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #e9ecef;
+  }
+  
+  progress::-webkit-progress-bar {
+    background-color: #e9ecef;
+  }
+  
+  progress::-webkit-progress-value {
+    background-color: #007bff;
+  }
+  
+  /* List styling */
+  ul#recordingslist {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  ul#recordingslist li {
+    margin-bottom: 10px;
+  }
+  
+  ul#recordingslist li audio {
+    margin-right: 10px;
+  }
+  
+  pre#log {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container-narrow {
+      padding: 15px;
+    }
+  
+    .row {
+      flex-direction: column;
+    }
+  
+    .span12, .span5, .span2 {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  
+    video {
+      width: 100%;
+    }
+  
+    #dropdown {
+      margin-bottom: 15px;
+    }
+  
+    .mast {
+      margin: 10px 0;
+      width: 100%;
+      text-align: center;
+    }
+  
+    h2, h1 {
+      text-align: center;
+    }
+  }
+  
